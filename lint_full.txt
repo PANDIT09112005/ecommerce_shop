@@ -1,0 +1,49 @@
+﻿
+> ecommerce-shop@0.1.0 lint
+> eslint
+
+
+C:\Users\Rudra Naryan\OneDrive\Desktop\website portfoilio\ecommerce-shop\src\app\cart\page.tsx
+  16:44  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  34:33  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Rudra Naryan\OneDrive\Desktop\website portfoilio\ecommerce-shop\src\app\checkout\page.tsx
+  29:51  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Rudra Naryan\OneDrive\Desktop\website portfoilio\ecommerce-shop\src\app\checkout\page.tsx:29:51
+  27 |                     <h1>Thank You for Your Order!</h1>
+  28 |                     <p>Your order has been placed successfully.</p>
+> 29 |                     <p>Order ID: #ORD-{Math.floor(Math.random() * 100000)}</p>
+     |                                                   ^^^^^^^^^^^^^ Cannot call impure function
+  30 |                     <Link href="/" className={styles.backBtn}>
+  31 |                         Continue Shopping
+  32 |                     </Link>  react-hooks/purity
+
+C:\Users\Rudra Naryan\OneDrive\Desktop\website portfoilio\ecommerce-shop\src\app\products\[id]\page.tsx
+  41:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Rudra Naryan\OneDrive\Desktop\website portfoilio\ecommerce-shop\src\components\ProductCard.tsx
+  24:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Rudra Naryan\OneDrive\Desktop\website portfoilio\ecommerce-shop\src\context\CartContext.tsx
+  28:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Rudra Naryan\OneDrive\Desktop\website portfoilio\ecommerce-shop\src\context\CartContext.tsx:28:13
+  26 |         const savedCart = localStorage.getItem("cart");
+  27 |         if (savedCart) {
+> 28 |             setItems(JSON.parse(savedCart));
+     |             ^^^^^^^^ Avoid calling setState() directly within an effect
+  29 |         }
+  30 |         setIsInitialized(true);
+  31 |     }, []);  react-hooks/set-state-in-effect
+
+Γ£û 6 problems (3 errors, 3 warnings)
+
